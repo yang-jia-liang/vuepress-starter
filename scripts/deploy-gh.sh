@@ -25,5 +25,4 @@ git push -f git@github.com:yang-jia-liang/vuepress-starter.git master:gh-pages
 
 cd -
 
-# 最后发布的时候执行 bash deploy-gh.sh
-# 文件夹中双击运行
+# 发布到github page： 项目根目录 Git Bash Here -> yarn run deploy-gh

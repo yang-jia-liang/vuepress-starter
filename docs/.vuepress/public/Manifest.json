@@ -1,0 +1,22 @@
+{
+  "name": "Progressive Times web app",
+  "short_name": "Progressive Times",
+  "description": "描述",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#FFDF00",
+  "background_color": "#FFDF00",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

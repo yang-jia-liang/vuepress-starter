@@ -1,5 +1,6 @@
 /* 配置文件的入口文件，也可以是 YML 或 toml */
 
+// 变更后需要重启项目
 module.exports = {
     // 网站的标题（显示在导航栏和tab页签上）
     title: "vuepress-starter",
@@ -20,16 +21,18 @@ module.exports = {
     // 额外的需要被注入到当前页面的 HTML <head> 中的标签
     head: [
         ["link", { rel: "icon", href: "/images/favicon.png" }],
-        ["meta", { name: "theme-color", content: "#00adb5" }],                         // 顶栏header bar和地址栏address bar的多彩的颜色
-        ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],            // 删除默认的苹果工具栏和菜单栏（把网页添加到主屏幕时才有效果）
-        ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "black" }], // 设置苹果工具栏颜色
-        ["meta", { name: "msapplication-TileColor", content: "#00adb5" }],             // chrome 的 app 顶部工具栏会根据该色值变色
+        ['link', { rel: 'manifest', href: '/manifest.json' }],
+        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
 
+        // IOS中的Manifest兼容
+        ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],                     // 类似于manifest中的display的功能，通过设置为yes可以进入standalone模式
+        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],          // 移动设备状态栏的样式
+        ['link', { rel: 'apple-touch-icon', href: '/image/icon-152.png' }],                     // 桌面图标
+        ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }], // 触摸栏上的自定义Safari书签图标和颜色
 
-        // H5分享时有用
-        ["meta", { itemprop: "description", content: "some CSS tricks, 一些常用的 CSS 样式, 一点 CSS 技巧" }], // 网页标题，不同社交APP截取的长度都不一样，然后手机屏幕大小也会再次不同程度裁减文字
-        ["meta", { itemprop: "name", content: "CSSTricks" }],                                              // 网页简介/摘要，和网页标题一样有长度限制，如果小屏幕可能还会裁减
-        ["meta", { itemprop: "image", content: "/css_tricks/images/favicon.png" }]                         // 网页缩略图/分享图标，显示在分享内容的左边，图片支持.jpg、.png等常见格式，建议使用200px*200px的图片，如果太大可能读取比较慢。
+        // Windows8 / Microsoft Surface(IE10+) 中的Manifest兼容
+        ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],  // 瓷砖块的背景图
+        ['meta', { name: 'msapplication-TileColor', content: '#000000' }],                                // 瓷砖块颜色
     ],
 
     // 提供多语言支持的语言配置
@@ -47,6 +50,11 @@ module.exports = {
             description: "vuepress-starter"
         }
     },
+
+    // 使用插件
+    plugins: [
+        '@vuepress/pwa', { serviceWorker: true, updatePopup: true },
+    ],
 
     // 主题配置
     themeConfig: {
@@ -171,13 +179,15 @@ module.exports = {
                 sidebar: {
                     '/': [
                         {
+                            title: 'PWA',
+                            path: '/PWA/',
+                        },
+                        {
                             title: "CSS",
-                            collapsable: false,                           // 是否可折叠，可选, 默认值是 true
+                            collapsable: false,                    // 是否可折叠，可选, 默认值是 true
                             children: [
-                                ["/CSS/css书写格式", "css书写格式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-                                ["/CSS/媒体查询", "媒体查询"],
-                                ["/CSS/私有属性", "私有属性"],
-                                ["/CSS/默认样式和CSS Reset", "默认样式和CSS Reset"],
+                                ["/CSS/cursor", "鼠标样式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
+                                ["/CSS/hollowCard", "卡卷生成器"],
                             ]
                         }
                     ],

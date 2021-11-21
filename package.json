@@ -6,10 +6,11 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "deploy-gh": "yarn docs:build && bash scripts/deploy-gh.sh"
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "async-validator": "1.11.5",
-    "element-ui": "^2.15.6"
+    "element-ui": "^2.15.6",
+    "moment": "^2.29.1"
   }
 }

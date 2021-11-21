@@ -62,12 +62,12 @@ json文件中不能加注释
   "background_color": "#FFDF00",
   "icons": [
     {
-      "src": "images/icon-152.png",
+      "src": img,
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "images/icon-144.png",
+      "src": img,
       "sizes": "144x144",
       "type": "image/png"
     }

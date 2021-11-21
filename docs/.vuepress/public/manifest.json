@@ -1,7 +1,7 @@
 {
-  "name": "Progressive Times web app",
-  "short_name": "Progressive Times",
-  "description": "描述",
+  "name": "vuepress-starter",
+  "short_name": "VP",
+  "description": "vuepress脚手架",
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait-primary",

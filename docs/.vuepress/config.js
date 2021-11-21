@@ -3,7 +3,7 @@
 // 变更后需要重启项目
 module.exports = {
     // 网站的标题（显示在导航栏和tab页签上）
-    title: "vuepress-starter",
+    title: "vuepress脚手架",
 
     // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中
     description: "vuepress脚手架",
@@ -20,18 +20,22 @@ module.exports = {
 
     // 额外的需要被注入到当前页面的 HTML <head> 中的标签
     head: [
-        ["link", { rel: "icon", href: "/images/favicon.png" }],
+        ["link", { rel: "icon", href: "/assets/img/favicon.ico" }],
+        ['meta', { name: 'author', content: 'yjl' }],
+        ['meta', { name: 'keywords', content: 'vuepress脚手架' }],
+
+
         ['link', { rel: 'manifest', href: '/manifest.json' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
 
         // IOS中的Manifest兼容
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],                     // 类似于manifest中的display的功能，通过设置为yes可以进入standalone模式
         ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],          // 移动设备状态栏的样式
-        ['link', { rel: 'apple-touch-icon', href: '/image/icon-152.png' }],                     // 桌面图标
+        ['link', { rel: 'apple-touch-icon', href: '/icons/icon-152.png' }],                     // 桌面图标
         ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }], // 触摸栏上的自定义Safari书签图标和颜色
 
         // Windows8 / Microsoft Surface(IE10+) 中的Manifest兼容
-        ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],  // 瓷砖块的背景图
+        ['meta', { name: 'msapplication-TileImage', content: '/icons/icon-144x144.png' }],  // 瓷砖块的背景图
         ['meta', { name: 'msapplication-TileColor', content: '#000000' }],                                // 瓷砖块颜色
     ],
 
@@ -40,12 +44,12 @@ module.exports = {
         // 键名是该语言所属的子路径
         // 作为特例，默认语言可以使用 '/' 作为其路径。
         "/": {
-            lang: "zh-CN",                                                // 设置<HTML>的 lang 属性
-            title: "vuepress-starter",
+            lang: "zh-CN",                     // 设置<HTML>的 lang 属性
+            title: "vuepress-starter",         // 网站标题，优先级比外层的title配置高
             description: "vuepress脚手架"
         },
         "/en/": {
-            lang: "en-US",                                                // 设置<HTML>的 lang 属性
+            lang: "en-US",
             title: "vuepress-starter",
             description: "vuepress-starter"
         }
@@ -53,13 +57,33 @@ module.exports = {
 
     // 使用插件
     plugins: [
-        '@vuepress/pwa', { serviceWorker: true, updatePopup: true },
+        '@vuepress/last-updated',
+        {
+            transformer: (timestamp, lang) => {
+                // 不要忘了安装 moment
+                const moment = require('moment');
+
+                moment.locale(lang);
+
+                return moment(timestamp).format('LLLL');
+            }
+        },
+        '@vuepress/pwa', {
+            serviceWorker: true,
+            updatePopup: {
+                message: "发现新内容可用.",
+                buttonText: "刷新"
+            }
+        },
     ],
 
     // 主题配置
     themeConfig: {
+        // 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，显示在每一页的底部，默认关闭
+        lastUpdated: '更新时间', // string | boolean
+
         // 导航栏 Logo
-        // logo: '/images/favicon.png',
+        // logo: '/assets/img/logo.png',
 
         // 导航栏链接
         // 链接默认包含target="_blank" rel="noopener noreferrer", 可以自己提供 target 与 rel
@@ -73,6 +97,14 @@ module.exports = {
                 link: "https://github.com/yang-jia-liang/vuepress-starter",
                 // target:'_self',
                 // rel: ''
+            },
+            {
+                text: "关于我",
+                link: "/about"
+            },
+            {
+                text: "帮助",
+                link: "/help"
             },
 
             // 当你提供了一个 items 数组而不是一个单一的 link 时，它将显示为一个 下拉列表
@@ -136,21 +168,40 @@ module.exports = {
          editLinkText: '帮助我们改善此页面！',     // 默认为 "Edit this page"
          * */
 
-        // 侧边栏配置
-        // sidebar: [
-        //     // 使用对象来将侧边栏划分成多个组
-        //     {
-        //         title: "CSS",
-        //         collapsable: false,                           // 是否可折叠，可选, 默认值是 true
-        //         children: [
-        //             ["/CSS/css书写格式", "css书写格式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-        //             ["/CSS/媒体查询", "媒体查询"],
-        //             ["/CSS/私有属性", "私有属性"],
-        //             ["/CSS/默认样式和CSS Reset", "默认样式和CSS Reset"],
-        //         ]
-        //     },
+        // sidebar: 'auto', // 自动生成侧边栏
+
+        // 自定义配置侧边栏
+        sidebar: [
+            '',
+            "about",
+            // 文件夹里面的页面要用对象来配置
+            {
+                title: 'CSS',
+                path: '/CSS/',
+                collapsable: false,   // 是否可折叠，可选, 默认值是 true
+                children: [
+                    '/CSS/cursor',
+                    "/CSS/hollowCard",
+                ]
+            },
+            {
+                title: 'PWA',
+                path: '/PWA/',
+            },
+            'help'
+        ],
+
+
+        // 配置规则，从上到下，只命中一个
+        // sidebar: {
+        //   '/CSS/': [
+        //       'cursor',
+        //       'hollowCard'
+        //   ],
+        //     '/': [
         //
-        // ],
+        //     ],
+        // },
 
         // 主题也内置了多语言支持
         // 每个语言除了可以配置一些站点中用到的文字之外，还可以拥有自己的 导航栏 和 侧边栏 配置
@@ -176,22 +227,22 @@ module.exports = {
                 algolia: {},
 
                 // 侧边栏配置
-                sidebar: {
-                    '/': [
-                        {
-                            title: 'PWA',
-                            path: '/PWA/',
-                        },
-                        {
-                            title: "CSS",
-                            collapsable: false,                    // 是否可折叠，可选, 默认值是 true
-                            children: [
-                                ["/CSS/cursor", "鼠标样式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-                                ["/CSS/hollowCard", "卡卷生成器"],
-                            ]
-                        }
-                    ],
-                }
+                // sidebar: {
+                //     '/': [
+                //         {
+                //             title: 'PWA',
+                //             path: '/PWA/',
+                //         },
+                //         {
+                //             title: "CSS",
+                //             collapsable: false,                    // 是否可折叠，可选, 默认值是 true
+                //             children: [
+                //                 ["/CSS/cursor", "鼠标样式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
+                //                 ["/CSS/hollowCard", "卡卷生成器"],
+                //             ]
+                //         }
+                //     ],
+                // }
             },
             "/en/": {
                 selectText: "Languages",                   // 多语言下拉菜单的标题

@@ -61,7 +61,8 @@ module.exports = {
                 // 不要忘了安装 moment
                 const moment = require('moment');
 
-                moment.locale(lang);
+                // moment.locale(lang); // 多语言使用
+                moment.locale('zh-cn');
 
                 return moment(timestamp).format('LLLL');
             }
@@ -77,7 +78,18 @@ module.exports = {
                 buttonText: "刷新"
             }
         },
-        '@vuepress/back-to-top': true
+        '@vuepress/back-to-top': true,
+        '@vssue/vuepress-plugin-vssue': {
+            // 设置 `platform` 而不是 `api`
+            platform: 'github',
+
+            // 其他的 Vssue 配置
+            owner: 'yang-jia-liang',
+            repo: 'vuepress-starter',
+            clientId: '928b333311b1165e0b5e',
+            clientSecret: '8eecc3a74cd73b4fa9850bb2eb1ba40f16e22f30',
+            autoCreateIssue: true, // 自动创建issue，省去一步操作
+        },
     },
 
     // 主题配置

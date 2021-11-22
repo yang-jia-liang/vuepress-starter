@@ -11,6 +11,8 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
+    "@vssue/api-github-v3": "^1.4.7",
+    "@vssue/vuepress-plugin-vssue": "^1.4.8",
     "async-validator": "1.11.5",
     "element-ui": "^2.15.6",
     "moment": "^2.29.1"

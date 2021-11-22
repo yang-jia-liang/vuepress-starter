@@ -62,3 +62,5 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
      footer: MIT Licensed | Copyright © 2018-present Evan You
      ---
 :::
+
+<Vssue :options="{ locale: 'zh' }" />   

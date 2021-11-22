@@ -6,6 +6,7 @@ VuePress项目脚手架，包含基本的配置以及模块注释，后续的Vue
 1. SEO
 2. 发布到 github.io
 3. PWA
+4. Vssue 评论
 
 ## 插件
 1. @vuepress/last-updated （显示文件最后更新时间）

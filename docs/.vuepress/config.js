@@ -37,6 +37,24 @@ module.exports = {
         // Windows8 / Microsoft Surface(IE10+) 中的Manifest兼容
         ['meta', { name: 'msapplication-TileImage', content: '/icons/icon-144.png' }],  // 瓷砖块的背景图
         ['meta', { name: 'msapplication-TileColor', content: '#000000' }],              // 瓷砖块颜色
+
+        // 添加百度统计
+        [
+            "script",
+            {},
+            `
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?122c8c3619099529f88017a761dbb803";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        `
+        ],
+
+        // 添加友盟+（cnzz）统计
+        ["script", { src: "https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168" }]
     ],
 
     // 提供多语言支持的语言配置
@@ -55,6 +73,7 @@ module.exports = {
     //     }
     // },
 
+    // 插件配置
     plugins: {
         '@vuepress/last-updated': {
             transformer: (timestamp, lang) => {
@@ -89,7 +108,7 @@ module.exports = {
             clientId: '928b333311b1165e0b5e',
             clientSecret: '8eecc3a74cd73b4fa9850bb2eb1ba40f16e22f30',
             autoCreateIssue: true, // 自动创建issue，省去一步操作
-        },
+        }
     },
 
     // 主题配置

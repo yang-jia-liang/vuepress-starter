@@ -263,7 +263,7 @@ yarn add @vssue/vuepress-plugin-vssue
 yarn add @vssue/api-github-v3
 ```
 
-## 使用
+### 使用
 1. 创建 OAuth App：
    https://vssue.js.org/zh/guide/github.html
 
@@ -298,4 +298,76 @@ module.exports = {
 
 :::tip
 官网：https://vssue.js.org/zh/
+:::
+
+## 网站流量统计
+### 添加百度统计
+1. [登录百度统计后台](https://tongji.baidu.com/sc-web/36717895/home/site/index?from=3)
+2. 创建站点
+3. 复制统计代码
+```js
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?122c8c3619099529f88017a761dbb803";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+```
+
+4. 修改 .vuepress/config.js
+```js
+module.exports = {
+    hdad: [
+        // 添加百度统计
+        [
+            "script",
+            {},
+            `
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?122c8c3619099529f88017a761dbb803";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        `
+        ]
+    ]
+};
+```
+::: tip
+[百度统计官方 js-api 文档](https://tongji.baidu.com/holmes/Tongji/%E7%BB%9F%E8%AE%A1%E5%BC%80%E6%94%BE%E6%89%8B%E5%86%8C/%E6%A6%82%E5%86%B5/)
+:::
+
+### 添加友盟+(cnzz)统计
+1. [登录友盟统计后台](https://www.umeng.com/)
+2. 创建站点
+3. 复制统计代码
+```js
+<script
+    type="text/javascript" 
+    src="https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168"
+>
+</script>
+```
+
+4. 修改 .vuepress/config.js
+```js
+module.exports = {
+    hdad: [
+        // 添加友盟+（cnzz）统计
+        ["script", { src: "https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168" }]
+    ]
+};
+```
+::: tip
+[百度统计官方 js-api 文档](https://tongji.baidu.com/holmes/Tongji/%E7%BB%9F%E8%AE%A1%E5%BC%80%E6%94%BE%E6%89%8B%E5%86%8C/%E6%A6%82%E5%86%B5/)
+:::
+
+::: tip
+net::ERR_BLOCKED_BY_CLIENT 浏览器的防广告插件屏蔽了
 :::

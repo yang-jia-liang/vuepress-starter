@@ -19,6 +19,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ::: tip
  默认主题提供的首页布局
+
 :::
 
 ::: details
@@ -63,4 +64,4 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
      ---
 :::
 
-<Vssue :options="{ locale: 'zh' }" />   
+<Vssue :options="{ locale: 'zh' }" />

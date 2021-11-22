@@ -10,6 +10,7 @@ VuePress项目脚手架，包含基本的配置以及模块注释，后续的Vue
 ## 插件
 1. @vuepress/last-updated （显示文件最后更新时间）
 2. @vuepress/pwa          （window PC端更新推送、移动端安装网页到桌面）
+3. @vuepress/plugin-back-to-top (快速返回顶部)
 
 
 ## 存在的问题

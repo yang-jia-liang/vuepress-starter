@@ -71,12 +71,13 @@ module.exports = {
             // 如果设置为 true，VuePress 将自动生成并注册一个 Service Worker，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）
             // 只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册
             serviceWorker: true,
-                // 开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 refresh 按钮，允许用户立即刷新内容
-                updatePopup: {
-                    message: "发现新内容可用.",
-                    buttonText: "刷新"
-                }
+            // 开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 refresh 按钮，允许用户立即刷新内容
+            updatePopup: {
+                message: "发现新内容可用.",
+                buttonText: "刷新"
             }
+        },
+        '@vuepress/back-to-top': true
     },
 
     // 主题配置

@@ -1,5 +1,5 @@
 ---
-home: true
+# home: true
 heroImage: /assets/img/logo.png
 heroText: Hero 标题
 tagline: Hero 副标题

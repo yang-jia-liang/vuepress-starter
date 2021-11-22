@@ -35,30 +35,28 @@ module.exports = {
         ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }], // 触摸栏上的自定义Safari书签图标和颜色
 
         // Windows8 / Microsoft Surface(IE10+) 中的Manifest兼容
-        ['meta', { name: 'msapplication-TileImage', content: '/icons/icon-144x144.png' }],  // 瓷砖块的背景图
-        ['meta', { name: 'msapplication-TileColor', content: '#000000' }],                                // 瓷砖块颜色
+        ['meta', { name: 'msapplication-TileImage', content: '/icons/icon-144.png' }],  // 瓷砖块的背景图
+        ['meta', { name: 'msapplication-TileColor', content: '#000000' }],              // 瓷砖块颜色
     ],
 
     // 提供多语言支持的语言配置
-    locales: {
-        // 键名是该语言所属的子路径
-        // 作为特例，默认语言可以使用 '/' 作为其路径。
-        "/": {
-            lang: "zh-CN",                     // 设置<HTML>的 lang 属性
-            title: "vuepress-starter",         // 网站标题，优先级比外层的title配置高
-            description: "vuepress脚手架"
-        },
-        "/en/": {
-            lang: "en-US",
-            title: "vuepress-starter",
-            description: "vuepress-starter"
-        }
-    },
+    // locales: {
+    //     // 键名是该语言所属的子路径
+    //     // 作为特例，默认语言可以使用 '/' 作为其路径。
+    //     "/": {
+    //         lang: "zh-CN",                     // 设置<HTML>的 lang 属性
+    //         title: "vuepress-starter",         // 网站标题，优先级比外层的title配置高
+    //         description: "vuepress脚手架"
+    //     },
+    //     "/en/": {
+    //         lang: "en-US",
+    //         title: "vuepress-starter",
+    //         description: "vuepress-starter"
+    //     }
+    // },
 
-    // 使用插件
-    plugins: [
-        '@vuepress/last-updated',
-        {
+    plugins: {
+        '@vuepress/last-updated': {
             transformer: (timestamp, lang) => {
                 // 不要忘了安装 moment
                 const moment = require('moment');
@@ -68,14 +66,18 @@ module.exports = {
                 return moment(timestamp).format('LLLL');
             }
         },
-        '@vuepress/pwa', {
+        '@vuepress/pwa': {
+            // Service Worker 的配置
+            // 如果设置为 true，VuePress 将自动生成并注册一个 Service Worker，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）
+            // 只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册
             serviceWorker: true,
-            updatePopup: {
-                message: "发现新内容可用.",
-                buttonText: "刷新"
+                // 开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 refresh 按钮，允许用户立即刷新内容
+                updatePopup: {
+                    message: "发现新内容可用.",
+                    buttonText: "刷新"
+                }
             }
-        },
-    ],
+    },
 
     // 主题配置
     themeConfig: {
@@ -205,80 +207,57 @@ module.exports = {
 
         // 主题也内置了多语言支持
         // 每个语言除了可以配置一些站点中用到的文字之外，还可以拥有自己的 导航栏 和 侧边栏 配置
-        locales: {
-            "/": {
-                selectText: '选择语言',              // 多语言下拉菜单的标题
-                label: "简体中文",                   // 该语言在下拉菜单中的标签
-                editLinkText: '在 GitHub 上编辑此页', // 编辑链接文字
-
-
-                // Service Worker 的配置
-                // 如果设置为 true，VuePress 将自动生成并注册一个 Service Worker，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）
-                // 只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册
-                serviceWorker: {
-                    // 开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 refresh 按钮，允许用户立即刷新内容
-                    updatePopup: {
-                        message: "发现新内容可用.",
-                        buttonText: "刷新"
-                    }
-                },
-
-                // 当前 locale 的 algolia docsearch 选项
-                algolia: {},
-
-                // 侧边栏配置
-                // sidebar: {
-                //     '/': [
-                //         {
-                //             title: 'PWA',
-                //             path: '/PWA/',
-                //         },
-                //         {
-                //             title: "CSS",
-                //             collapsable: false,                    // 是否可折叠，可选, 默认值是 true
-                //             children: [
-                //                 ["/CSS/cursor", "鼠标样式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-                //                 ["/CSS/hollowCard", "卡卷生成器"],
-                //             ]
-                //         }
-                //     ],
-                // }
-            },
-            "/en/": {
-                selectText: "Languages",                   // 多语言下拉菜单的标题
-                label: "English",                          // 该语言在下拉菜单中的标签
-                editLinkText: 'Edit this page on GitHub',  // 编辑链接文字
-
-                // Service Worker 的配置
-                // 如果设置为 true，VuePress 将自动生成并注册一个 Service Worker，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）
-                // 只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册
-                serviceWorker: {
-                    // 开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 refresh 按钮，允许用户立即刷新内容
-                    updatePopup: {
-                        message: "New content is available.",
-                        buttonText: "Refresh"
-                    }
-                },
-
-                // 当前 locale 的 algolia docsearch 选项
-                algolia: {},
-
-                // 侧边栏配置
-                sidebar: {
-                    '/en/': [
-                        {
-                            title: "CSS",
-                            collapsable: false,                           // 是否可折叠，可选, 默认值是 true
-                            children: [
-                                ["/en/CSS/CSS writing format", "CSS writing format"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-                                ["/en/CSS/Media queries", "Media queries"],
-                                ["/en/CSS/Private property", "Private property"],
-                                ["/en/CSS/Default styles and CSS Reset", "Default styles and CSS Reset"],
-                            ]
-                        }
-                    ],
-                }
-            }
-        }
+        // locales: {
+        //     "/": {
+        //         selectText: '选择语言',              // 多语言下拉菜单的标题
+        //         label: "简体中文",                   // 该语言在下拉菜单中的标签
+        //         editLinkText: '在 GitHub 上编辑此页', // 编辑链接文字
+        //
+        //         // 当前 locale 的 algolia docsearch 选项
+        //         algolia: {},
+        //
+        //         // 侧边栏配置
+        //         // sidebar: {
+        //         //     '/': [
+        //         //         {
+        //         //             title: 'PWA',
+        //         //             path: '/PWA/',
+        //         //         },
+        //         //         {
+        //         //             title: "CSS",
+        //         //             collapsable: false,                    // 是否可折叠，可选, 默认值是 true
+        //         //             children: [
+        //         //                 ["/CSS/cursor", "鼠标样式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
+        //         //                 ["/CSS/hollowCard", "卡卷生成器"],
+        //         //             ]
+        //         //         }
+        //         //     ],
+        //         // }
+        //     },
+        //     "/en/": {
+        //         selectText: "Languages",                   // 多语言下拉菜单的标题
+        //         label: "English",                          // 该语言在下拉菜单中的标签
+        //         editLinkText: 'Edit this page on GitHub',  // 编辑链接文字
+        //
+        //         // 当前 locale 的 algolia docsearch 选项
+        //         algolia: {},
+        //
+        //         // 侧边栏配置
+        //         sidebar: {
+        //             '/en/': [
+        //                 {
+        //                     title: "CSS",
+        //                     collapsable: false,                           // 是否可折叠，可选, 默认值是 true
+        //                     children: [
+        //                         ["/en/CSS/CSS writing format", "CSS writing format"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
+        //                         ["/en/CSS/Media queries", "Media queries"],
+        //                         ["/en/CSS/Private property", "Private property"],
+        //                         ["/en/CSS/Default styles and CSS Reset", "Default styles and CSS Reset"],
+        //                     ]
+        //                 }
+        //             ],
+        //         }
+        //     }
+        // }
     }
 }

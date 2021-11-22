@@ -2,20 +2,19 @@
   "name": "vuepress-starter",
   "short_name": "VP",
   "description": "vuepress脚手架",
-  "start_url": "/index.html",
+  "start_url": "/vuepress-starter",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "theme_color": "#FFDF00",
   "background_color": "#FFDF00",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
-      "sizes": "152x152",
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-144.png",
-      "sizes": "144x144",
+      "src": "icons/icon-192.png",
+      "sizes": "152x152",
       "type": "image/png"
     }
   ]

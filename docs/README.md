@@ -1,5 +1,5 @@
 ---
-# home: true
+home: true
 heroImage: /assets/img/logo.png
 heroText: Hero 标题
 tagline: Hero 副标题
@@ -62,5 +62,3 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
      footer: MIT Licensed | Copyright © 2018-present Evan You
      ---
 :::
-
-测试PWA更新

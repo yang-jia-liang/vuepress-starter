@@ -1,6 +1,5 @@
 ## 引言
 
-
 ### 背景
 大家都知道Native app体验确实很好，下载到手机上之后入口也方便。它也有一些缺点:<br />​<br />
 
@@ -52,23 +51,22 @@ Manifest就是一个json文件，在里面给出了诸如主题、背景色、�
 json文件中不能加注释
 ```json
 {
-  "name": "Progressive Times web app",
-  "short_name": "Progressive Times",
-  "description": "描述",
-  "start_url": "/index.html",
+  "name": "vuepress-starter",
+  "short_name": "VP",
+  "description": "vuepress脚手架",
+  "start_url": "/vuepress-starter",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "theme_color": "#FFDF00",
   "background_color": "#FFDF00",
   "icons": [
     {
-      "src": img,
-      "sizes": "152x152",
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": img,
-      "sizes": "144x144",
+      "src": "icons/icon-192.png",
+      "sizes": "152x152",
       "type": "image/png"
     }
   ]
@@ -98,7 +96,7 @@ display控制了应用的显示模式
 
 ​
 
-让我们来看下这四种模式的差异：<br />![155386265-5b604618b57f5_fix732.png](https://cdn.nlark.com/yuque/0/2021/png/12547035/1637231357525-2edb1e6f-4973-493b-a9c7-6b6637a2dc12.png#clientId=ucd158821-60e0-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u20ae2775&margin=%5Bobject%20Object%5D&name=155386265-5b604618b57f5_fix732.png&originHeight=390&originWidth=732&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32415&status=done&style=none&taskId=u5a7397b3-3017-4b5f-b848-e37e2fbf033&title=)<br />当然，不同的系统所表现出的具体样式也不完全一样。就像示例中的虚拟按键在fullscreen 模式下会默认隐藏。<br />​<br />
+让我们来看下这四种模式的差异：<br /><br />当然，不同的系统所表现出的具体样式也不完全一样。就像示例中的虚拟按键在fullscreen 模式下会默认隐藏。<br />​<br />
 #### orientation
 控制Web App的方向。设置某些值会具有类似锁屏的效果（禁止旋转），例如例子中的portrait-primary​<br />​
 
@@ -131,7 +129,7 @@ icons用来指定应用的桌面图标。icons本身是一个数组，每个元�
 </html>
 ```
 
-<br />效果如下<br />![image.png](https://cdn.nlark.com/yuque/0/2021/png/12547035/1637222100380-d87f6a96-2748-4920-bdf7-e29669513217.png#clientId=ucd158821-60e0-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=323&id=ZSXiW&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1291&originWidth=720&originalType=url&ratio=1&rotation=0&showTitle=false&size=464334&status=done&style=none&taskId=u03801dbc-f8e1-4b9b-a9d0-ca71757493d&title=&width=180)<br />可以看到地址栏也被渲染成黄色的背景，点菜单有个“添加到主屏幕的选项”，添加后<br />![image.png](https://cdn.nlark.com/yuque/0/2021/png/12547035/1637222135474-9723ed12-c399-4363-ad37-f639958da1ad.png#clientId=ucd158821-60e0-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=323&id=X1qLP&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1291&originWidth=720&originalType=url&ratio=1&rotation=0&showTitle=false&size=401145&status=done&style=none&taskId=u75524b0c-fede-4824-8d8f-c91c18e46db&title=&width=180)<br />打开后是没有地址栏的，跟原生应用效果一样了，并且有个splash screen<br />​<br />
+<br />效果如下<br /><br />打开后是没有地址栏的，跟原生应用效果一样了，并且有个splash screen<br />​<br />
 ### 兼容性
 ​
 
@@ -166,7 +164,7 @@ icons用来指定应用的桌面图标。icons本身是一个数组，每个元�
 #### 什么是service worker
 
 <br />Service Worker 是 Chrome 团队提出和力推的一个 WEB API，用于给 web 应用提供高级的可持续的后台处理能力。<br />
-<br />![4032102925-5a2b5f6fec25a_fix732.png](https://cdn.nlark.com/yuque/0/2021/png/12547035/1637287290694-2cbe4a69-8914-4733-a2f5-4e06c1914691.png#clientId=u2e897ed5-16c2-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u691a6d2a&margin=%5Bobject%20Object%5D&name=4032102925-5a2b5f6fec25a_fix732.png&originHeight=235&originWidth=732&originalType=binary&ratio=1&rotation=0&showTitle=false&size=48730&status=done&style=none&taskId=u33a0d3ee-4b84-44ee-87a3-c41179ee13c&title=)<br />
+<br /><br />
 <br />Service Workers 就像介于服务器和网页之间的拦截器，能够拦截进出的HTTP 请求，从而完全控制你的网站。<br />​<br />
 #### 最主要的特点
 **​**<br />
@@ -181,7 +179,7 @@ icons用来指定应用的桌面图标。icons本身是一个数组，每个元�
 
 <br />为什么要求网站必须是HTTPS的，大概是因为service worker权限太大能拦截所有页面的请求吧，如果http的网站安装service worker很容易被攻击<br />​<br />
 #### 浏览器支持情况
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/12547035/1637287398515-bbb859f7-ff27-4a7f-99c2-d045e8c8ced5.png#clientId=u2e897ed5-16c2-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=329&id=u02f61528&margin=%5Bobject%20Object%5D&name=image.png&originHeight=657&originWidth=1701&originalType=binary&ratio=1&rotation=0&showTitle=false&size=117031&status=done&style=none&taskId=u7590ff81-b245-4249-8f86-9679647e906&title=&width=850.5)<br />
+<br />
 
 ## 总结
 

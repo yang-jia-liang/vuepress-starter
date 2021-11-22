@@ -108,7 +108,8 @@ module.exports = {
             clientId: '928b333311b1165e0b5e',
             clientSecret: '8eecc3a74cd73b4fa9850bb2eb1ba40f16e22f30',
             autoCreateIssue: true, // 自动创建issue，省去一步操作
-        }
+        },
+        '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' }
     },
 
     // 主题配置
@@ -202,12 +203,11 @@ module.exports = {
          editLinkText: '帮助我们改善此页面！',     // 默认为 "Edit this page"
          * */
 
-        // sidebar: 'auto', // 自动生成侧边栏
+        // 自动生成侧边栏
+        // sidebar: 'auto',
 
         // 自定义配置侧边栏
         sidebar: [
-            '',
-            "about",
             // 文件夹里面的页面要用对象来配置
             {
                 title: 'CSS',
@@ -225,8 +225,7 @@ module.exports = {
             'help'
         ],
 
-
-        // 配置规则，从上到下，只命中一个
+        // 自定义配置侧边栏， 配置规则，从上到下，只命中一个
         // sidebar: {
         //   '/CSS/': [
         //       'cursor',

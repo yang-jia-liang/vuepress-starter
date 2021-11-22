@@ -1,8 +1,6 @@
-https://img.shields.io/github/issues/yang-jia-liang/vuepress-starter
-
 # vuepress-starter
 
-VuePress项目脚手架，包含基本的配置以及模块注释，后续的VuePress网站会以这个为起点
+VuePress项目脚手架，包含基本的配置以及模块注释
 
 ## 功能
 1. SEO
@@ -16,6 +14,7 @@ VuePress项目脚手架，包含基本的配置以及模块注释，后续的Vue
 2. @vuepress/pwa          （window PC端更新推送、移动端安装网页到桌面）
 3. @vuepress/plugin-back-to-top (快速返回顶部)
 4. @vssue/vuepress-plugin-vssue (github 提issue评论)
+5. @vuepress/plugin-medium-zoom (图片放大)
 
 ## 第三方服务
 1. 百度统计
@@ -24,6 +23,7 @@ VuePress项目脚手架，包含基本的配置以及模块注释，后续的Vue
 
 ## 存在的问题
 1. pwa 在PC浏览器地址栏没有安装按钮
+2. 在线图片报403
 
 
 ## 在线预览

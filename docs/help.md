@@ -391,3 +391,29 @@ module.exports = {
 ::: warning
 net::ERR_BLOCKED_BY_CLIENT 被浏览器的防广告插件屏蔽了
 :::
+
+
+## 添加图片
+```bash
+<img :src="$withBase('/assets/img/favicon.ico')" alt="favicon">
+
+![favicon](/assets/img/favicon.ico)
+```
+
+### 图片放大
+1. 安装插件
+```bash
+yarn add -D @vuepress/plugin-medium-zoom
+# OR npm install -D @vuepress/plugin-medium-zoom
+```
+2. 使用
+```js
+module.exports = {
+    plugins: {
+    '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' }
+    },
+};
+```
+```bash
+<img :src="$withBase('/assets/img/favicon.ico')" alt="favicon" class='zoom-custom-imgs'>
+```

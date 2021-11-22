@@ -15,8 +15,6 @@ features:
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
-# home
-
 ::: tip
  默认主题提供的首页布局
 

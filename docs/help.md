@@ -178,11 +178,12 @@ module.exports = {
 3. git bash here 执行 yarn run deploy
 
 :::tip
-    脚本运行失败，可以把打包后的dist文件夹里的文件复制到gh-pages分支目录下，单独提交
+    脚本运行失败，可以把打包的dist文件夹里的文件复制到gh-pages分支目录下，单独提交
 :::
 
-### 部署到自己的域名
-https://www.bilibili.com/video/BV1vb411m7NY?p=8&spm_id_from=pageDriver
+::: tip 
+[部署到自己的域名](https://www.bilibili.com/video/BV1vb411m7NY?p=8&spm_id_from=pageDriver)
+:::
 
 ## PWA
 
@@ -192,7 +193,7 @@ yarn add -D @vuepress/plugin-pwa
 # OR npm install -D @vuepress/plugin-pwa
 ```
 
-## 使用
+### 使用
 1. 修改 .vuepress/config.js
 ```js
 module.exports = {
@@ -252,8 +253,7 @@ module.exports = {
 ```
 
 ::: tip
-视频教程：
-https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html
+[视频教程](https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html)
 :::
 
 ## Vssue 评论
@@ -264,9 +264,7 @@ yarn add @vssue/api-github-v3
 ```
 
 ### 使用
-1. 创建 OAuth App：
-   https://vssue.js.org/zh/guide/github.html
-
+1. [创建 OAuth App](https://vssue.js.org/zh/guide/github.html)
 2. 修改 .vuepress/config.js
 ```js
 module.exports = {
@@ -296,8 +294,33 @@ module.exports = {
 <Vssue :options="{ locale: 'zh' }" />
 ```
 
+3.1 全局使用
+1. 新建.vuepress/theme文件夹
+2. 新建.vuepress/theme/index.js 继承默认的主题
+3. 拷贝VuePress的[默认主题文件](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-default)，layouts/Layout.vue、util/index.js
+4. 在默认布局的插槽中加入自定义内容
+``` html
+        <Page
+               v-else
+                sidebar-items="sidebarItems"
+        >
+            <template #top>
+                <slot name="page-top" />
+            </template>
+            <template #bottom>
+                <slot name="page-bottom" />
+
+                <!-- 评论组件 -->
+                <Vssue
+                    options="{ locale: 'zh' }"
+                    class="theme-default-content content__default"
+                />
+            </template>
+        </Page>
+```
+
 :::tip
-官网：https://vssue.js.org/zh/
+[Vssue官网](https://vssue.js.org/zh/)
 :::
 
 ## 网站流量统计
@@ -305,7 +328,7 @@ module.exports = {
 1. [登录百度统计后台](https://tongji.baidu.com/sc-web/36717895/home/site/index?from=3)
 2. 创建站点
 3. 复制统计代码
-```js
+```html
 <script>
     var _hmt = _hmt || [];
     (function() {
@@ -347,7 +370,7 @@ module.exports = {
 1. [登录友盟统计后台](https://www.umeng.com/)
 2. 创建站点
 3. 复制统计代码
-```js
+```html
 <script
     type="text/javascript" 
     src="https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168"
@@ -364,10 +387,7 @@ module.exports = {
     ]
 };
 ```
-::: tip
-[百度统计官方 js-api 文档](https://tongji.baidu.com/holmes/Tongji/%E7%BB%9F%E8%AE%A1%E5%BC%80%E6%94%BE%E6%89%8B%E5%86%8C/%E6%A6%82%E5%86%B5/)
-:::
 
-::: tip
-net::ERR_BLOCKED_BY_CLIENT 浏览器的防广告插件屏蔽了
+::: warning
+net::ERR_BLOCKED_BY_CLIENT 被浏览器的防广告插件屏蔽了
 :::

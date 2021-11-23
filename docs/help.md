@@ -123,7 +123,12 @@ module.exports = {
 ## 热更新
 
 ::: tip
-    YAML / .vuepress/config.js 改变后需要重启项目
+
+    - YAML
+    - .vuepress/components 
+    - .vuepress/config.js 
+
+  改变后需要重启项目
 ::: 
  
 ## SEO
@@ -278,7 +283,7 @@ module.exports = {
             repo: '<github仓库名>',
             clientId: '<创建的OAuth App 中的Client ID>',
             clientSecret: '<创建的OAuth App 中的Client secrets>',
-            autoCreateIssue: true, // 自动创建issue，省去一步操作
+            autoCreateIssue: true, // 自动创建issue，省去一步操作，需要登录github，没有登录会自动跳转登录页
         },
     },
 };
@@ -404,16 +409,40 @@ net::ERR_BLOCKED_BY_CLIENT 被浏览器的防广告插件屏蔽了
 1. 安装插件
 ```bash
 yarn add -D @vuepress/plugin-medium-zoom
-# OR npm install -D @vuepress/plugin-medium-zoom
+# OR 
+npm install -D @vuepress/plugin-medium-zoom
 ```
 2. 使用
 ```js
 module.exports = {
     plugins: {
-    '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' }
+        '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' }
     },
 };
 ```
 ```bash
 <img :src="$withBase('/assets/img/favicon.ico')" alt="favicon" class='zoom-custom-imgs'>
 ```
+
+## live2d动画
+1. 安装插件
+```bash
+yarn add vuepress-plugin-helper-live2d
+# or
+npm install vuepress-plugin-helper-live2d --save
+```
+
+2. 使用
+```js
+module.exports = {
+    plugins: {
+        'vuepress-plugin-helper-live2d': true
+    },
+};
+```
+
+::: tip 
+会在 vuepress/public/ 生成live2d文件夹，保存模型信息
+
+[官方文档](https://github.com/JoeyBling/vuepress-plugin-helper-live2d)
+:::

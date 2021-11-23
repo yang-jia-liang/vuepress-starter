@@ -107,9 +107,10 @@ module.exports = {
             repo: 'vuepress-starter',
             clientId: '928b333311b1165e0b5e',
             clientSecret: '8eecc3a74cd73b4fa9850bb2eb1ba40f16e22f30',
-            autoCreateIssue: true, // 自动创建issue，省去一步操作
+            // autoCreateIssue: true, // 自动创建issue，省去一步操作
         },
-        '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' }
+        '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' },
+        'vuepress-plugin-helper-live2d': { live2d: { model: 'hijiki' } }
     },
 
     // 主题配置

@@ -15,6 +15,7 @@ VuePress项目脚手架，包含基本的配置以及模块注释
 3. @vuepress/plugin-back-to-top (快速返回顶部)
 4. @vssue/vuepress-plugin-vssue (github 提issue评论)
 5. @vuepress/plugin-medium-zoom (图片放大)
+6. vuepress-plugin-helper-live2d (live2d动画)
 
 ## 第三方服务
 1. 百度统计
@@ -25,6 +26,8 @@ VuePress项目脚手架，包含基本的配置以及模块注释
 1. pwa 在PC浏览器地址栏没有安装按钮
 2. 在线图片报403
 
+## 后续更新
+1. 百度广告 （需要个人域名）
 
 ## 在线预览
 https://yang-jia-liang.github.io/vuepress-starter/

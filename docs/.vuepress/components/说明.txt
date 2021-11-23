@@ -8,6 +8,4 @@
     驼峰命名
         e.g. cursorTemp
 
-
-
 components文件夹变更后，需要重启项目

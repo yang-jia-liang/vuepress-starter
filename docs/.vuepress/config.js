@@ -3,10 +3,10 @@
 // 变更后需要重启项目
 module.exports = {
     // 网站的标题（显示在导航栏和tab页签上）
-    title: "vuepress脚手架",
+    title: "初识 VuePress",
 
     // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中
-    description: "vuepress脚手架",
+    description: "vuepress建站模板",
 
     // build 的输出目录, 默认：.vuepress/dist
     // dest: "./dist",
@@ -58,20 +58,20 @@ module.exports = {
     ],
 
     // 提供多语言支持的语言配置
-    // locales: {
-    //     // 键名是该语言所属的子路径
-    //     // 作为特例，默认语言可以使用 '/' 作为其路径。
-    //     "/": {
-    //         lang: "zh-CN",                     // 设置<HTML>的 lang 属性
-    //         title: "vuepress-starter",         // 网站标题，优先级比外层的title配置高
-    //         description: "vuepress脚手架"
-    //     },
-    //     "/en/": {
-    //         lang: "en-US",
-    //         title: "vuepress-starter",
-    //         description: "vuepress-starter"
-    //     }
-    // },
+    locales: {
+        // 键名是该语言所属的子路径
+        // 作为特例，默认语言可以使用 '/' 作为其路径。
+        '/': {
+            lang: 'zh-CN',
+            title: '初识 VuePress',
+            description: 'vuepress建站模板'
+        },
+        '/en/': {
+            lang: 'en-US',                      // 设置<HTML>的 lang 属性
+            title: 'Hello VuePress',             // 网站标题，优先级比外层的title配置高
+            description: 'vuepress template'     // 网站描述，优先级比外层的description配置高
+        }
+    },
 
     // 插件配置
     plugins: {
@@ -110,7 +110,14 @@ module.exports = {
             // autoCreateIssue: true, // 自动创建issue，省去一步操作
         },
         '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' },
-        'vuepress-plugin-helper-live2d': { live2d: { model: 'hijiki' } }
+        'vuepress-plugin-helper-live2d': {
+            live2d: {
+                model: 'hijiki',
+                display: {
+                    vOffset: -80
+                }
+            }
+        }
     },
 
     // 主题配置
@@ -133,10 +140,6 @@ module.exports = {
                 link: "https://github.com/yang-jia-liang/vuepress-starter",
                 // target:'_self',
                 // rel: ''
-            },
-            {
-                text: "关于我",
-                link: "/about"
             },
             {
                 text: "帮助",
@@ -222,8 +225,7 @@ module.exports = {
             {
                 title: 'PWA',
                 path: '/PWA/',
-            },
-            'help'
+            }
         ],
 
         // 自定义配置侧边栏， 配置规则，从上到下，只命中一个
@@ -239,57 +241,17 @@ module.exports = {
 
         // 主题也内置了多语言支持
         // 每个语言除了可以配置一些站点中用到的文字之外，还可以拥有自己的 导航栏 和 侧边栏 配置
-        // locales: {
-        //     "/": {
-        //         selectText: '选择语言',              // 多语言下拉菜单的标题
-        //         label: "简体中文",                   // 该语言在下拉菜单中的标签
-        //         editLinkText: '在 GitHub 上编辑此页', // 编辑链接文字
-        //
-        //         // 当前 locale 的 algolia docsearch 选项
-        //         algolia: {},
-        //
-        //         // 侧边栏配置
-        //         // sidebar: {
-        //         //     '/': [
-        //         //         {
-        //         //             title: 'PWA',
-        //         //             path: '/PWA/',
-        //         //         },
-        //         //         {
-        //         //             title: "CSS",
-        //         //             collapsable: false,                    // 是否可折叠，可选, 默认值是 true
-        //         //             children: [
-        //         //                 ["/CSS/cursor", "鼠标样式"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-        //         //                 ["/CSS/hollowCard", "卡卷生成器"],
-        //         //             ]
-        //         //         }
-        //         //     ],
-        //         // }
-        //     },
-        //     "/en/": {
-        //         selectText: "Languages",                   // 多语言下拉菜单的标题
-        //         label: "English",                          // 该语言在下拉菜单中的标签
-        //         editLinkText: 'Edit this page on GitHub',  // 编辑链接文字
-        //
-        //         // 当前 locale 的 algolia docsearch 选项
-        //         algolia: {},
-        //
-        //         // 侧边栏配置
-        //         sidebar: {
-        //             '/en/': [
-        //                 {
-        //                     title: "CSS",
-        //                     collapsable: false,                           // 是否可折叠，可选, 默认值是 true
-        //                     children: [
-        //                         ["/en/CSS/CSS writing format", "CSS writing format"],         // 使用 [link, text] 格式的数组，显式指定链接的文字
-        //                         ["/en/CSS/Media queries", "Media queries"],
-        //                         ["/en/CSS/Private property", "Private property"],
-        //                         ["/en/CSS/Default styles and CSS Reset", "Default styles and CSS Reset"],
-        //                     ]
-        //                 }
-        //             ],
-        //         }
-        //     }
-        // }
+        locales: {
+            "/": {
+                selectText: '选择语言',              // 多语言下拉菜单的标题
+                label: "简体中文",                   // 该语言在下拉菜单中的标签
+                editLinkText: '在 GitHub 上编辑此页', // 编辑链接文字
+            },
+            "/en/": {
+                selectText: "Languages",                   // 多语言下拉菜单的标题
+                label: "English",                          // 该语言在下拉菜单中的标签
+                editLinkText: 'Edit this page on GitHub',  // 编辑链接文字
+            }
+        }
     }
 }

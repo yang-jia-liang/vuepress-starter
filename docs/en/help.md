@@ -1,6 +1,5 @@
 ---
 title: '帮助'
-sidebar: 'auto'
 ---
 
 ## YAML

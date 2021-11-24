@@ -133,6 +133,10 @@ module.exports = {
                     vOffset: -80
                 }
             }
+        },
+        'vuepress-plugin-code-copy': {
+            align: 'top',
+            successText: '复制成功！'
         }
     },
 

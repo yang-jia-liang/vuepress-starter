@@ -16,6 +16,7 @@ VuePress项目脚手架，包含基本的配置以及模块注释
 4. @vssue/vuepress-plugin-vssue (github 提issue评论)
 5. @vuepress/plugin-medium-zoom (图片放大)
 6. vuepress-plugin-helper-live2d (live2d动画)
+7. vuepress-plugin-code-copy (markdown代码块复制)
 
 ## 第三方服务
 1. 百度统计
@@ -24,7 +25,6 @@ VuePress项目脚手架，包含基本的配置以及模块注释
 
 ## 存在的问题
 1. pwa 在PC浏览器地址栏没有安装按钮
-2. 在线图片报403
 
 ## 后续更新
 1. 百度广告 （需要个人域名）

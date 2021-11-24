@@ -394,6 +394,40 @@ module.exports = {
 };
 ```
 
+::: tip 控制台warning警告
+
+解决控制台warning警告：`A parser-blocking, cross site (i.e. different eTLD+1) script, https://c.cnzz.com/... `
+<br/><br/>
+[警告原因](https://blog.csdn.net/WuLex/article/details/101017150)
+
+```js
+module.exports = {
+    hdad: [
+        // 添加友盟+（cnzz）统计
+        [
+            "script",
+            {},
+            `
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.async = true;
+                  hm.type = 'text/javascript';
+                  hm.charset = 'utf-8';
+                  hm.src = "https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+            `
+        ]
+    ]
+};
+```
+:::
+
+
+
+
 ::: warning
 net::ERR_BLOCKED_BY_CLIENT 被浏览器的防广告插件屏蔽了
 :::

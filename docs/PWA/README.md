@@ -133,7 +133,7 @@ icons用来指定应用的桌面图标。icons本身是一个数组，每个元�
 ### 兼容性
 ​
 
-到目前为止，我们的工作都非常顺利：创建manifest.json，添加meta标签，然后把我们的Web App添加到桌面。然而，如果我们在iPhone上访问我们的站点，然后“添加到主屏幕”，你会发现——一切都失效了！是的，你没有看错，一切都回到了原样。<br />![2977243403-5b6046189b92b_fix732.png](https://cdn.nlark.com/yuque/0/2021/png/12547035/1637232215299-0698a93e-2b28-4366-9b51-7677e5ea4c8a.png#clientId=u20b31464-c8dd-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=oKnUI&margin=%5Bobject%20Object%5D&name=2977243403-5b6046189b92b_fix732.png&originHeight=281&originWidth=732&originalType=binary&ratio=1&rotation=0&showTitle=false&size=68281&status=done&style=none&taskId=uaeb44b25-af6f-43b4-b2df-4ac43b053df&title=)<br />​<br />
+到目前为止，我们的工作都非常顺利：创建manifest.json，添加meta标签，然后把我们的Web App添加到桌面。然而，如果我们在iPhone上访问我们的站点，然后“添加到主屏幕”，你会发现——一切都失效了！是的，你没有看错，一切都回到了原样。<br />
 ## IOS中的兼容处理
 
 <br />safari虽然不支持Web App Manifest，但是它有自己的一些head标签来定义相应的资源与展示形式：<br />

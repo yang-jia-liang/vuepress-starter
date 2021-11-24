@@ -43,18 +43,34 @@ module.exports = {
             "script",
             {},
             `
-            var _hmt = _hmt || [];
-            (function() {
-              var hm = document.createElement("script");
-              hm.src = "https://hm.baidu.com/hm.js?122c8c3619099529f88017a761dbb803";
-              var s = document.getElementsByTagName("script")[0]; 
-              s.parentNode.insertBefore(hm, s);
-            })();
-        `
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?122c8c3619099529f88017a761dbb803";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+            `
         ],
 
         // 添加友盟+（cnzz）统计
-        ["script", { src: "https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168" }]
+        // ["script", { src: "https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168" }]
+        [
+            "script",
+            {},
+            `
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.async = true;
+                  hm.type = 'text/javascript';
+                  hm.charset = 'utf-8';
+                  hm.src = "https://s4.cnzz.com/z_stat.php?id=1280620168&web_id=1280620168";
+                  var s = document.getElementsByTagName("script")[0];
+                  s.parentNode.insertBefore(hm, s);
+                })();
+            `
+        ]
     ],
 
     // 提供多语言支持的语言配置
@@ -107,7 +123,7 @@ module.exports = {
             repo: 'vuepress-starter',
             clientId: '928b333311b1165e0b5e',
             clientSecret: '8eecc3a74cd73b4fa9850bb2eb1ba40f16e22f30',
-            // autoCreateIssue: true, // 自动创建issue，省去一步操作
+            // autoCreateIssue: true, // 自动创建issue，省去一步操作，需要登录github，没有登录会自动跳转登录页
         },
         '@vuepress/medium-zoom': { selector: 'img.zoom-custom-imgs' },
         'vuepress-plugin-helper-live2d': {
@@ -215,11 +231,12 @@ module.exports = {
             // 文件夹里面的页面要用对象来配置
             {
                 title: 'CSS',
-                path: '/CSS/',
+                // path: '/CSS/',
                 collapsable: false,   // 是否可折叠，可选, 默认值是 true
                 children: [
                     '/CSS/cursor',
                     "/CSS/hollowCard",
+                    "/CSS/animation",
                 ]
             },
             {
